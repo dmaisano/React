@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import './App.css';
 
 export class App extends Component {
   render() {
-    return <div></div>;
+    return (
+      <div className="App">
+        <p>foo</p>
+      </div>
+    );
   }
 }
 
