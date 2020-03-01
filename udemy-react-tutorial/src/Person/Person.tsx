@@ -1,11 +1,16 @@
 import React from 'react';
 
-const Person: React.FC = () => {
+export interface PersonProps {
+  name: string;
+  age: number;
+  children?: any;
+}
+
+export const Person: React.FC<PersonProps> = (props: PersonProps) => {
   return (
-    <div>
-      <p>Person</p>
-    </div>
+    <p>
+      My name is {props.name} and I am {props.age} years old
+      <div>{JSON.stringify(props.children)}</div>
+    </p>
   );
 };
-
-export default Person;
