@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
-import { Person, PersonProps } from './Person/Person';
+import React, { useState } from 'react';
+import { Person } from './Person/Person';
 
-export class App extends Component {
-  state: {
-    persons: PersonProps[];
-  } = {
+export const App: React.FC = () => {
+  const [state, setState] = useState({
     persons: [
       {
         name: 'Finn',
@@ -19,19 +17,27 @@ export class App extends Component {
         age: 17,
       },
     ],
+    btnActive: false,
+  });
+
+  const switchNameHandler = () => {
+    setState({
+      ...state,
+      btnActive: !state.btnActive,
+    });
   };
 
-  render() {
-    const { persons } = this.state;
+  const { persons, btnActive } = state;
 
-    return (
-      <div className="App">
-        {persons.map((person) => (
-          <Person {...person} />
-        ))}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="App">
+      <p>Button active: {btnActive ? 'true' : 'false'}</p>
+      <button onClick={switchNameHandler}>Toggle State</button>
+      {persons.map((person) => (
+        <Person {...person} />
+      ))}
+    </div>
+  );
+};
 
 export default App;
