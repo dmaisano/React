@@ -27,14 +27,38 @@ export const App: React.FC = () => {
     });
   };
 
+  const nameChangedHandler = (
+    event: React.FormEvent<HTMLInputElement>,
+    personIndex: number
+  ) => {
+    const persons = state.persons.map((person, idx) => {
+      if (idx === personIndex) {
+        person.name = event.currentTarget.value;
+      }
+
+      return person;
+    });
+
+    setState({
+      persons,
+      ...state,
+    });
+  };
+
   const { persons, btnActive } = state;
 
   return (
     <div className="App">
       <p>Button active: {btnActive ? 'true' : 'false'}</p>
       <button onClick={switchNameHandler}>Toggle State</button>
-      {persons.map((person) => (
-        <Person {...person} />
+      {persons.map((person, index) => (
+        <Person
+          {...person}
+          key={index}
+          index={index}
+          click={switchNameHandler}
+          nameChangedHandler={nameChangedHandler}
+        />
       ))}
     </div>
   );
