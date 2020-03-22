@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
-import { ObjectType, Field, ID } from 'type-graphql';
+import { ObjectType, Field, ID, Root } from 'type-graphql';
+import {} from 'class-validator';
 
 @ObjectType()
 @Entity()
@@ -17,7 +18,9 @@ export class User extends BaseEntity {
   lastName: string;
 
   @Field()
-  name: string;
+  averageRating(@Root() parent: User): string {
+    return `${parent.firstName} ${parent.lastName}`;
+  }
 
   @Field()
   @Column('text', { unique: true })
