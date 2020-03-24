@@ -4,7 +4,7 @@ import { Arg, Mutation, Resolver, Ctx } from 'type-graphql';
 import { User } from '../../entity/User';
 import { MyContext } from '../../types/MyContext';
 
-@Resolver(User)
+@Resolver()
 export class LoginResolver {
   @Mutation(() => User, { nullable: true })
   async login(
@@ -19,6 +19,8 @@ export class LoginResolver {
     const valid = await bcrypt.compare(password, user.password);
 
     if (!valid) return null;
+
+    if (!user.confirmed) return null;
 
     ctx.req.session!.userId = user.id;
 
