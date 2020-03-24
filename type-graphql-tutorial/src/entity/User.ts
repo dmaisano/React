@@ -17,7 +17,7 @@ export class User extends BaseEntity {
   lastName: string;
 
   @Field()
-  averageRating(@Root() parent: User): string {
+  name(@Root() parent: User): string {
     return `${parent.firstName} ${parent.lastName}`;
   }
 

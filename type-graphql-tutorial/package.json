@@ -37,6 +37,6 @@
     "typescript": "^3.2.2"
   },
   "scripts": {
-    "start": "ts-node-dev --respawn src/index.ts"
+    "start": "ts-node-dev --no-notify --respawn src/index.ts"
   }
 }
