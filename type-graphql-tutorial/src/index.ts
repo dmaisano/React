@@ -1,16 +1,16 @@
-import 'reflect-metadata';
 import { ApolloServer } from 'apollo-server-express';
-import Express from 'express';
-import { buildSchema } from 'type-graphql';
-import { createConnection } from 'typeorm';
-import session from 'express-session';
 import connectRedis from 'connect-redis';
 import cors from 'cors';
+import Express from 'express';
+import session from 'express-session';
+import 'reflect-metadata';
+import { buildSchema } from 'type-graphql';
+import { createConnection } from 'typeorm';
 
-import { redis } from './redis';
-import { RegisterResolver } from './module/user/Register';
 import { LoginResolver } from './module/user/Login';
 import { MeResolver } from './module/user/Me';
+import { RegisterResolver } from './module/user/Register';
+import { redis } from './redis';
 
 const main = async () => {
   const conn = await createConnection();

@@ -1,6 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
-import { ObjectType, Field, ID, Root } from 'type-graphql';
-import {} from 'class-validator';
+import { Field, ID, ObjectType, Root } from 'type-graphql';
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @ObjectType()
 @Entity()
