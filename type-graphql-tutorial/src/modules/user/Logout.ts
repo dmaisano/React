@@ -1,5 +1,5 @@
-import { Resolver, Mutation, Ctx } from 'type-graphql';
-import { MyContext } from '../../types/MyContext';
+import { Resolver, Mutation, Ctx } from "type-graphql";
+import { MyContext } from "../../types/MyContext";
 
 @Resolver()
 export class LougoutResolver {
@@ -12,7 +12,7 @@ export class LougoutResolver {
           return rej(false);
         }
 
-        ctx.res.clearCookie('qid');
+        ctx.res.clearCookie("qid");
         return res(true);
       });
     });

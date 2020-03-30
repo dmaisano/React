@@ -1,16 +1,16 @@
-import bcrypt from 'bcryptjs';
-import { Arg, Mutation, Resolver } from 'type-graphql';
+import bcrypt from "bcryptjs";
+import { Arg, Mutation, Resolver } from "type-graphql";
 
-import { User } from '../../entity/User';
-import { redis } from '../../redis';
-import { forgotPasswordPrefix } from '../contants/redisPrefixes';
-import { ChangePasswordInput } from './changePassword/ChangePasswordInput';
+import { User } from "../../entity/User";
+import { redis } from "../../redis";
+import { forgotPasswordPrefix } from "../contants/redisPrefixes";
+import { ChangePasswordInput } from "./changePassword/ChangePasswordInput";
 
 @Resolver()
 export class ChangePasswordResolver {
   @Mutation(() => User, { nullable: true })
   async changePassword(
-    @Arg('data') { token, password }: ChangePasswordInput,
+    @Arg("data") { token, password }: ChangePasswordInput,
   ): Promise<User | null> {
     token = forgotPasswordPrefix + token;
 

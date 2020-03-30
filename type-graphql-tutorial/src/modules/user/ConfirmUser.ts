@@ -1,13 +1,13 @@
-import { Arg, Mutation, Resolver } from 'type-graphql';
+import { Arg, Mutation, Resolver } from "type-graphql";
 
-import { User } from '../../entity/User';
-import { redis } from '../../redis';
-import { confirmUserPrefix } from '../contants/redisPrefixes';
+import { User } from "../../entity/User";
+import { redis } from "../../redis";
+import { confirmUserPrefix } from "../contants/redisPrefixes";
 
 @Resolver()
 export class ConfirmUserResolver {
   @Mutation(() => Boolean)
-  async confirmUser(@Arg('token') token: string): Promise<boolean> {
+  async confirmUser(@Arg("token") token: string): Promise<boolean> {
     token = confirmUserPrefix + token;
     const userId = await redis.get(token);
 

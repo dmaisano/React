@@ -9,5 +9,5 @@ export const typeOrmConfig: ConnectionOptions = {
   database: "",
   synchronize: true,
   logging: true,
-  entities: [""],
+  dropSchema: false,
 };
