@@ -1,9 +1,12 @@
 import { createConnection, Connection } from "typeorm";
-import { typeOrmConfig } from "../ormconfig.test";
 
-export const testConn = (): Promise<Connection> => {
+import { typeOrmTestConfig } from "../ormconfig";
+
+export const testConn = (drop: boolean = false): Promise<Connection> => {
   return createConnection({
-    ...typeOrmConfig,
-    entities: ["./src/entity/**/*.{js,ts}"],
+    ...typeOrmTestConfig,
+    entities: [`${__dirname}/../entity/**/*.{js,ts}`],
+    synchronize: drop,
+    dropSchema: drop,
   });
 };

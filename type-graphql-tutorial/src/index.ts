@@ -9,6 +9,7 @@ import { createConnection } from "typeorm";
 
 import { typeOrmConfig } from "./ormconfig";
 import { redis } from "./redis";
+import { createSchema } from "./utils/createSchema";
 
 const main = async () => {
   const conn = await createConnection({
@@ -16,9 +17,11 @@ const main = async () => {
     entities: ["./src/entity/**/*.{js,ts}"],
   });
 
-  const schema = await buildSchema({
-    resolvers: [__dirname + "/modules/**/*.ts"],
-  });
+  const schema = await createSchema();
+
+  // const schema = await buildSchema({
+  //   resolvers: [__dirname + "/modules/**/*.ts"],
+  // });
 
   const apolloServer = new ApolloServer({
     schema,
