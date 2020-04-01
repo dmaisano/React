@@ -3,5 +3,5 @@ import { GraphQLSchema } from "graphql";
 
 export const createSchema = () =>
   buildSchema({
-    resolvers: [__dirname + "/../modules/*/*.ts"],
+    resolvers: [__dirname + "/../modules/**/*.resolver.ts"],
   });

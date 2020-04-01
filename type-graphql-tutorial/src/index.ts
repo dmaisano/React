@@ -17,14 +17,8 @@ const main = async () => {
     entities: ["./src/entity/**/*.{js,ts}"],
   });
 
-  const schema = await createSchema();
-
-  // const schema = await buildSchema({
-  //   resolvers: [__dirname + "/modules/**/*.ts"],
-  // });
-
   const apolloServer = new ApolloServer({
-    schema,
+    schema: await createSchema(),
     context: ({ req, res }) => ({ req, res }),
   });
 
