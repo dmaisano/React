@@ -45,9 +45,3 @@ export const BaseCreateProduct = createResolver(
   ProductInput,
   Product,
 );
-
-// @Resolver()
-// export class CreateUserResolver extends BaseCreateUser {}
-
-// @Resolver()
-// export class CreateProductResolver extends BaseCreateProduct {}

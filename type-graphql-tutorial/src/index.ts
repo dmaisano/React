@@ -4,8 +4,8 @@ import cors from "cors";
 import Express from "express";
 import session from "express-session";
 import "reflect-metadata";
-import { buildSchema } from "type-graphql";
 import { createConnection } from "typeorm";
+import chalk from "chalk";
 
 import { typeOrmConfig } from "./ormconfig";
 import { redis } from "./redis";
@@ -52,8 +52,9 @@ const main = async () => {
 
   apolloServer.applyMiddleware({ app });
 
-  app.listen(4000, () => {
-    console.log("server started on http://localhost:4000/graphql");
+  const PORT = 4000;
+  app.listen(PORT, () => {
+    console.log(`server started on ${chalk.green(`http://localhost:${PORT}/graphql`)}`);
   });
 };
 

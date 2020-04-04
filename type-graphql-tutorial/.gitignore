@@ -2,3 +2,5 @@ node_modules
 ormconfig*[json, js, ts]
 !src/scripts/ormconfig.sample.ts
 dump.*
+
+images/*
