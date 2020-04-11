@@ -9,7 +9,6 @@ const { readFile, writeFile } = fsPromises;
  */
 const main = async () => {
   createOrmConfig("src/ormconfig.ts");
-  createOrmConfig("src/ormconfig.test.ts");
 };
 
 const createOrmConfig = async (fileName: string) => {
