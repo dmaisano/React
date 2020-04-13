@@ -16,7 +16,7 @@ const createOrmConfig = async (fileName: string) => {
     encoding: "utf-8",
   })) as string;
 
-  const absPath = chalk.magenta(resolve(fileName));
+  const absPath = chalk.blue(resolve(fileName));
 
   try {
     await writeFile(fileName, fileContents, {
@@ -27,7 +27,7 @@ const createOrmConfig = async (fileName: string) => {
     console.log(`${chalk.green("Created file:")} ${absPath}`);
   } catch (e) {
     if (e!.errno === -17) {
-      console.log(`${chalk.red("File already exists:")} ${absPath}`);
+      console.log(`${chalk.yellow("File already exists:")} ${absPath}`);
     } else {
       console.log(`${chalk.red("Unable to create file:")} ${absPath}`);
     }
