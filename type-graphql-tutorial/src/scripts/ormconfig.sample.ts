@@ -16,10 +16,9 @@ export const typeOrmTestConfig: ConnectionOptions = {
   type: "postgres",
   host: "",
   port: 0,
-  username: "",
+  username: "postgres",
   password: "",
-  database: "typegraphql-tutorial",
+  database: "typegraphql-tutorial-test",
   synchronize: true,
   logging: true,
-  dropSchema: false,
 };
