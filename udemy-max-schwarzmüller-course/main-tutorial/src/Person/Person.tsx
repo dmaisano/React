@@ -1,5 +1,5 @@
-import React from 'react';
-import './Person.css';
+import React from "react";
+import "./Person.css";
 
 interface Props {
   index: number;
@@ -7,10 +7,7 @@ interface Props {
   age: number;
   children?: any;
   click: () => void;
-  nameChangedHandler: (
-    event: React.FormEvent<HTMLInputElement>,
-    personIndex: number
-  ) => void;
+  changed: (event: React.FormEvent<HTMLInputElement>, personIndex: number) => void;
 }
 
 export const Person: React.FC<Props> = (props: Props) => {
@@ -21,7 +18,7 @@ export const Person: React.FC<Props> = (props: Props) => {
       </p>
       <input
         type="text"
-        onChange={(e) => props.nameChangedHandler(e, props.index)}
+        onChange={(e) => props.changed(e, props.index)}
         value={props.name}
       />
     </div>

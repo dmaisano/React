@@ -1,34 +1,49 @@
-import React, { useState } from 'react';
-import { Person } from './Person/Person';
+import React, { useState } from "react";
+import { Person } from "./Person/Person";
+import "./App.css";
+
 export const App: React.FC = () => {
   const [state, setState] = useState({
     persons: [
       {
-        name: 'Finn',
+        name: "Finn",
         age: 17,
       },
       {
-        name: 'Jake',
+        name: "Jake",
         age: 34,
       },
       {
-        name: 'Fern',
+        name: "Fern",
         age: 17,
       },
     ],
-    btnActive: false,
+    otherState: "some text",
+    showPersons: false,
   });
 
-  const switchNameHandler = () => {
+  const deletePersonHandler = (personIndex: number) => {
+    const persons = [...state.persons];
+
+    // remove the person from the array
+    persons.splice(personIndex, 1);
+
     setState({
       ...state,
-      btnActive: !state.btnActive,
+      persons,
+    });
+  };
+
+  const togglePersonsHandler = () => {
+    setState({
+      ...state,
+      showPersons: !state.showPersons,
     });
   };
 
   const nameChangedHandler = (
     event: React.FormEvent<HTMLInputElement>,
-    personIndex: number
+    personIndex: number,
   ) => {
     const persons = state.persons.map((person, idx) => {
       if (idx === personIndex) {
@@ -39,26 +54,29 @@ export const App: React.FC = () => {
     });
 
     setState({
-      persons,
       ...state,
+      persons,
     });
   };
 
-  const { persons, btnActive } = state;
+  let persons: JSX.Element[] = [];
+
+  if (state.showPersons) {
+    persons = state.persons.map((person, index) => (
+      <Person
+        {...person}
+        key={index}
+        index={index}
+        click={() => deletePersonHandler(index)}
+        changed={nameChangedHandler}
+      />
+    ));
+  }
 
   return (
     <div className="App">
-      <p>Button active: {btnActive ? 'true' : 'false'}</p>
-      <button onClick={switchNameHandler}>Toggle State</button>
-      {persons.map((person, index) => (
-        <Person
-          {...person}
-          key={index}
-          index={index}
-          click={switchNameHandler}
-          nameChangedHandler={nameChangedHandler}
-        />
-      ))}
+      <button onClick={togglePersonsHandler}>Toggle Persons</button>
+      {persons}
     </div>
   );
 };
