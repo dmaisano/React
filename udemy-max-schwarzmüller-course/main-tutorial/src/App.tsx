@@ -6,14 +6,17 @@ export const App: React.FC = () => {
   const [state, setState] = useState({
     persons: [
       {
+        id: "372541a5-ff73-407a-a540-9d7afd034283",
         name: "Finn",
         age: 17,
       },
       {
+        id: "5ee56e45-1f4a-440d-beba-8f09bd84a1bf",
         name: "Jake",
         age: 34,
       },
       {
+        id: "b87efbbc-ec03-4e67-b42b-86644704c16a",
         name: "Fern",
         age: 17,
       },
@@ -43,15 +46,18 @@ export const App: React.FC = () => {
 
   const nameChangedHandler = (
     event: React.FormEvent<HTMLInputElement>,
-    personIndex: number,
+    personID: string,
   ) => {
-    const persons = state.persons.map((person, idx) => {
-      if (idx === personIndex) {
-        person.name = event.currentTarget.value;
-      }
-
-      return person;
+    const personIndex = state.persons.findIndex((person) => {
+      return person.id === personID;
     });
+
+    const person = { ...state.persons[personIndex] };
+
+    person.name = event.currentTarget.value;
+
+    const persons = [...state.persons];
+    persons[personIndex] = person;
 
     setState({
       ...state,
@@ -65,8 +71,7 @@ export const App: React.FC = () => {
     persons = state.persons.map((person, index) => (
       <Person
         {...person}
-        key={index}
-        index={index}
+        key={person.id}
         click={() => deletePersonHandler(index)}
         changed={nameChangedHandler}
       />
