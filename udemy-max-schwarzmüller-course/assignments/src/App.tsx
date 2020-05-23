@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 
-import Assignment from "./assignment-1";
+import Assignment from "./assignment-2";
 
 function App() {
   return (
