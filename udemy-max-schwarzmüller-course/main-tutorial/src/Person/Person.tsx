@@ -1,4 +1,5 @@
 import React from "react";
+import Radium from "radium";
 import "./Person.css";
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
   changed: (event: React.FormEvent<HTMLInputElement>, personID: string) => void;
 }
 
-export const Person: React.FC<Props> = (props: Props) => {
+const Person: React.FC<Props> = (props: Props) => {
   return (
     <div className="Person">
       <p onClick={props.click}>
@@ -24,3 +25,5 @@ export const Person: React.FC<Props> = (props: Props) => {
     </div>
   );
 };
+
+export default Radium(Person);

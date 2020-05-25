@@ -10,6 +10,7 @@
     "@types/node": "^12.12.41",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
+    "radium": "^0.26.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
@@ -35,5 +36,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/radium": "^0.24.2"
   }
 }

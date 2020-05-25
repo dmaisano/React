@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Person } from "./Person/Person";
+import Person from "./Person/Person";
+import Radium from "radium";
 import "./App.css";
 
 export const App: React.FC = () => {
@@ -21,7 +22,6 @@ export const App: React.FC = () => {
         age: 17,
       },
     ],
-    otherState: "some text",
     showPersons: false,
   });
 
@@ -76,14 +76,43 @@ export const App: React.FC = () => {
         changed={nameChangedHandler}
       />
     ));
+
+    styles.backgroundColor = "red";
+    styles[":hover"].backgroundColor = "#F96D80";
+  }
+
+  const classes: string[] = [];
+
+  if (state.persons.length <= 2) {
+    classes.push("red");
+  }
+
+  if (state.persons.length <= 1) {
+    classes.push("bold");
   }
 
   return (
     <div className="App">
-      <button onClick={togglePersonsHandler}>Toggle Persons</button>
+      <p className={classes.join(" ")}>Some Text</p>
+      <button style={styles} onClick={togglePersonsHandler}>
+        Toggle Persons
+      </button>
       {persons}
     </div>
   );
 };
 
-export default App;
+const styles = {
+  backgroundColor: "green",
+  color: "white",
+  font: "inherit",
+  border: "1px solid blue",
+  padding: "0.5rem",
+  cursor: "pointer",
+  ":hover": {
+    backgroundColor: "lightgreen",
+    color: "black",
+  },
+};
+
+export default Radium(App);
