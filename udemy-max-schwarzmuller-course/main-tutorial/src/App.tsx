@@ -92,13 +92,15 @@ export const App: React.FC = () => {
   }
 
   return (
-    <div className="App">
-      <p className={classes.join(" ")}>Some Text</p>
-      <button style={styles} onClick={togglePersonsHandler}>
-        Toggle Persons
-      </button>
-      {persons}
-    </div>
+    <Radium.StyleRoot>
+      <div className="App">
+        <p className={classes.join(" ")}>Some Text</p>
+        <button style={styles} onClick={togglePersonsHandler}>
+          Toggle Persons
+        </button>
+        {persons}
+      </div>
+    </Radium.StyleRoot>
   );
 };
 

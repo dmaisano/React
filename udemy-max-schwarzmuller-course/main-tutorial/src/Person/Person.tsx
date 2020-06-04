@@ -11,9 +11,15 @@ interface Props {
   changed: (event: React.FormEvent<HTMLInputElement>, personID: string) => void;
 }
 
+const style: Radium.StyleRules = {
+  "@media (min-width: 500px)": {
+    width: "450px",
+  },
+};
+
 const Person: React.FC<Props> = (props: Props) => {
   return (
-    <div className="Person">
+    <div className="Person" style={style}>
       <p onClick={props.click}>
         My name is {props.name} and I am {props.age} years old
       </p>
